@@ -84,9 +84,11 @@ export default class App extends Component {
                 }
                 break;
             case "=":
-                const calc = new Calc(displayValue);
-                const result = calc.calc();
-                this.setState({displayValue: result + ""});
+                if(!isNaN(displayValue[displayValue.length - 1])) {
+                    const calc = new Calc(displayValue);
+                    const result = calc.calc();
+                    this.setState({displayValue: result + ""});
+                }
                 break;
             case "CLEAR":
                 this.setState({displayValue: "0"});
